@@ -93,7 +93,7 @@ export const getAllTasksFailure = () => ({
 
 export const signupUser = (name, email, password) => (dispatch) => {
   axios
-    .post("http://localhost:3001/signup", { name, email, password })
+    .post("https://taskmanager-backend-rgxa.onrender.com/signup", { name, email, password })
     .then((response) => {
       const { username, userid, token } = response.data;
       const userData = { username, userid, token };
@@ -112,7 +112,7 @@ export const signupUser = (name, email, password) => (dispatch) => {
 
 export const login = (email, password) => (dispatch) => {
   axios
-    .post("http://localhost:3001/login", { email, password })
+    .post("https://taskmanager-backend-rgxa.onrender.com/login", { email, password })
     .then((response) => {
       dispatch(loginFailure(false));
       const { username, userid, token } = response.data;
@@ -143,7 +143,7 @@ export const addTask = (title, status) => (dispatch) => {
   const token = localStorage.getItem("token");
   axios
     .post(
-      "http://localhost:3001/addtask",
+      "https://taskmanager-backend-rgxa.onrender.com/addtask",
       { title, status },
       {
         headers: {
@@ -165,7 +165,7 @@ export const updateTask = (taskId, title, status, deadline) => (dispatch) => {
   const token = localStorage.getItem("token");
   axios
     .put(
-      `https://your-api-url.com/updatetask/${taskId}`,
+      `https://taskmanager-backend-rgxa.onrender.com/updatetask/${taskId}`,
       { title, status, deadline },
       {
         headers: {
@@ -175,6 +175,7 @@ export const updateTask = (taskId, title, status, deadline) => (dispatch) => {
     )
     .then((response) => {
       dispatch(updateTaskSuccess(response.data));
+      dispatch(getAllTasks());
     })
     .catch((error) => {
       dispatch(updateTaskFailure());
@@ -185,7 +186,7 @@ export const updateTask = (taskId, title, status, deadline) => (dispatch) => {
 export const deleteTask = (taskId) => (dispatch) => {
   const token = localStorage.getItem("token");
   axios
-    .delete(`http://localhost:3001/deletetask/${taskId}`, {
+    .delete(`https://taskmanager-backend-rgxa.onrender.com/deletetask/${taskId}`, {
       headers: {
         Authorization: token ? `Bearer ${token}` : "",
       },
@@ -202,13 +203,15 @@ export const deleteTask = (taskId) => (dispatch) => {
 export const getAllTasks = () => (dispatch) => {
   const token = localStorage.getItem("token");
   const userId = JSON.parse(localStorage.getItem("userData")).userid;
-  console.log(userId);
   axios
-    .get(`http://localhost:3001/alltasks?userId=${userId}`, {
-      headers: {
-        Authorization: token ? `Bearer ${token}` : "",
-      },
-    })
+    .get(
+      `https://taskmanager-backend-rgxa.onrender.com/alltasks?userId=${userId}`,
+      {
+        headers: {
+          Authorization: token ? `Bearer ${token}` : "",
+        },
+      }
+    )
     .then((response) => {
       dispatch(getAllTasksSuccess(response.data));
       localStorage.setItem("taskData", JSON.stringify(response.data));

@@ -10,6 +10,7 @@
   transition: 0.25s ease-in-out;
   cursor: pointer;
   border: none;
+  border-radius: 5px;
   font-size: large;
   column-gap: 1em;
 }
@@ -26,22 +27,27 @@
 .done {
   text-align: center;
 }
-.pending .task {
+.pending .task,
+.pending .updatetask {
   border-top: 4px solid red;
 }
-.inprogress .task {
+.inprogress .task,
+.inprogress .updatetask {
   border-top: 4px solid #fbff00;
 }
-.done .task {
+.done .task,
+.done .updatetask {
   border-top: 4px solid #49ff00;
 }
-.task {
+.task,
+.updatetask {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   padding: 1em;
   border-radius: 5px;
   margin: 1em;
 }
-.task button {
+.task button,
+.updatetask button {
   padding: 0.3em 0.7em;
   background-color: var(--black);
   color: var(--white);
@@ -53,5 +59,30 @@
   margin: 0.5em;
 }
 .task button:hover {
+  background-color: var(--grey);
+}
+.updatetaskinner {
+  display: flex;
+  flex-direction: column;
+}
+.updatetaskinner input,
+.updatetaskinner select {
+  padding: 1em;
+  margin: 1em;
+  border-radius: 3px;
+  border: 0.5px solid var(--grey);
+}
+.updatetaskinner button {
+  padding: 0.3em;
+  background-color: var(--black);
+  color: var(--white);
+  transition: 0.25s ease-in-out;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-size: medium;
+  margin: 0.5em;
+}
+.updatetaskinner button:hover {
   background-color: var(--grey);
 }
