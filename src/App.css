@@ -1,0 +1,123 @@
+:root {
+  --black: #111111;
+  --grey: #626262;
+  --greylight: #f1f1f1;
+  --white: #fff;
+}
+body {
+  font-family: "Ubuntu", sans-serif;
+}
+
+.loginform,
+.signupform {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2em;
+  text-align: center;
+  margin-top: 4em;
+}
+.loginform form,
+.signupform form {
+  margin: auto;
+  margin-bottom: 4em;
+  width: 22%;
+  display: flex;
+  flex-direction: column;
+}
+.loginform input,
+.signupform input {
+  padding: 1em;
+  margin: 1em;
+  border-radius: 3px;
+  border: 0.5px solid var(--grey);
+}
+.loginform input:focus,
+.signupform input:focus {
+  outline: none;
+}
+.loginform input:nth-child(3),
+.signupform input:nth-child(4) {
+  background-color: var(--black);
+  color: white;
+  transition: 0.25s ease-in-out;
+  cursor: pointer;
+}
+.loginform input:nth-child(3):hover,
+.signupform input:nth-child(4):hover {
+  background-color: var(--grey);
+}
+.loginform a,
+.signupform a {
+  font-size: medium;
+  color: var(--black);
+}
+.pagenotfound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5em;
+  margin-bottom: 5em;
+  padding: 5em;
+}
+.pagenotfound a {
+  text-decoration: none;
+  background-color: var(--black);
+  padding: 0.8em 2em;
+  color: var(--white);
+  transition: 0.25s ease-in-out;
+}
+
+.createtaskform {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2em;
+  text-align: center;
+  margin-top: 4em;
+}
+.createtaskform {
+  margin: auto;
+  margin-bottom: 4em;
+  width: 22%;
+  display: flex;
+  flex-direction: column;
+}
+.createtaskform input,
+.createtaskform select,
+.createtaskform button {
+  padding: 1em;
+  margin: 1em;
+  border-radius: 3px;
+  border: 0.5px solid var(--grey);
+}
+.createtaskform input:focus,
+.createtaskform select:focus {
+  outline: none;
+}
+.createtaskform button:nth-child(3) {
+  background-color: var(--black);
+  color: white;
+  transition: 0.25s ease-in-out;
+  cursor: pointer;
+}
+.createtaskform button:nth-child(3):hover {
+  background-color: var(--grey);
+}
+
+.warninghidden {
+  opacity: 0;
+  transition: 0.25s ease-in-out;
+  font-size: small;
+}
+.warningnothidden {
+  opacity: 1;
+  transition: 0.25s ease-in-out;
+  font-size: small;
+  color: red;
+}
+.maincreatetask h1,
+.maincreatetask p {
+  text-align: center;
+}
